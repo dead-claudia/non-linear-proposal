@@ -169,7 +169,7 @@ Here's what I imagine the syntax would be like for better non-linear asynchrony 
 
         for all (const item of iter) {
             console.log(`start ${item}`)
-            yield item
+            yield await item
             console.log(`end ${item}`)
         }
 
