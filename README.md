@@ -1,3 +1,5 @@
+*(Originally from [this gist](https://gist.github.com/isiahmeadows/ba298c7de6bbf1c36448f718be6a762b))*
+
 # Non-linear Control Flow
 
 Asynchrony is hard. Modeling it is not super intuitive in most languages, JavaScript being no exception for the longest time. But we have been making progress:
