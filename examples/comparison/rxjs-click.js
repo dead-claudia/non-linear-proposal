@@ -16,7 +16,7 @@ function getSuggestions(selector) {
         .flatMap(url => Rx.Observable.fromPromise(
             window.fetch(url).then(response => response.json())
         ))
-        .map(() => listUsers[randInt(listUsers.length)])
+        .map(listUsers => listUsers[randInt(listUsers.length)])
 
     return Rx.Observable.fromEvent(baseElem, "click")
     .startWith(undefined)
