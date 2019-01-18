@@ -6,13 +6,13 @@ function randInt(range) {
 function getSuggestions(selector, send) {
     send(undefined)
 
-    function getUsers(next) {
+    function getUser(next) {
         $.ajax({url: "https://api.github.com/users?since=" + randInt(500)})
         .fail(function (e) { console.error(e) })
         .done(function (listUsers) { next(listUsers[randInt(listUsers.length)]) })
     }
 
-    getUsers(function (user) {
+    getUser(function (user) {
         var current = user
         send(current)
 
@@ -20,7 +20,7 @@ function getSuggestions(selector, send) {
             current = undefined
             send(undefined)
 
-            getUsers(function (user) {
+            getUser(function (user) {
                 current = user
                 send(current)
             })
