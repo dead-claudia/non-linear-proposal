@@ -9,19 +9,19 @@ function getSuggestions(selector, send) {
     function getUsers(next) {
         $.ajax({url: "https://api.github.com/users?since=" + randInt(500)})
         .fail(function (e) { console.error(e) })
-        .done(function (listUsers) { next(listUsers) })
+        .done(function (listUsers) { next(listUsers[randInt(listUsers.length)]) })
     }
 
-    getUsers(function (listUsers) {
-        var current = listUsers[randInt(listUsers.length)]
+    getUsers(function (user) {
+        var current = user
         send(current)
 
         $(".refresh").click(function () {
             current = undefined
             send(undefined)
 
-            getUsers(function (listUsers) {
-                current = listUsers[randInt(listUsers.length)]
+            getUsers(function (user) {
+                current = user
                 send(current)
             })
         })
